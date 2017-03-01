@@ -117,18 +117,18 @@
       });
 
 
-      $(this.rootElem).on('mousedown', this.selector, function (evt) {
+      $(this.rootElem).on('mousedown touchstart', this.selector, function (evt) {
         self.element = $(this);
         evt.targetMouseOn = evt.target;
         self.dragstart(this, evt);
         return false;
       });
 
-      $(document).on('mousemove', function (evt) {
+      $(document).on('mousemove touchmove', function (evt) {
         self.dragging(evt);
       });
 
-      $(document).on('mouseup', function (evt) {
+      $(document).on('mouseup touchend', function (evt) {
         self.dragend(evt);
       });
     }
