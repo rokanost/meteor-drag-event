@@ -49,12 +49,17 @@
      * @param evt {Object} Mousemove Event
      */
     dragging(evt) {
+
       if (!this.selected) {
         return;
       }
 
-      newXPos = document.all ? window.event.clientX : evt.pageX;
-      newYPos = document.all ? window.event.clientY : evt.pageY;
+
+      var touch = evt.originalEvent.touches || evt.originalEvent.changedTouches;
+      touch = touch ? touch[0] : evt;
+
+      newXPos = document.all ? window.event.clientX : touch.pageX;
+      newYPos = document.all ? window.event.clientY : touch.pageY;
 
       if (this.isFirstDragging) {
         this.dx = 0;
